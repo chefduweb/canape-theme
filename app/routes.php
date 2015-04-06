@@ -9,8 +9,5 @@
  *
  */
 
-Route::get('home', function(){
+Route::get('home', 'HomeController@index' );
 
-    return View::make('welcome');
-
-});

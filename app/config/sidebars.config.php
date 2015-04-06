@@ -9,9 +9,9 @@ return array(
 	*/
 	array(
 
-		'name'			=> __('First sidebar', THEMOSIS_THEME_TEXTDOMAIN),
+		'name'			=> __('First sidebar', CUISINE_THEME_TEXTDOMAIN),
 		'id'			=> 'first-sidebar',
-		'description'	=> __('Area of first sidebar', THEMOSIS_THEME_TEXTDOMAIN),
+		'description'	=> __('Area of first sidebar', CUISINE_THEME_TEXTDOMAIN),
 		'before_widget'	=> '<div>',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',

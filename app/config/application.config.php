@@ -11,12 +11,12 @@ return array(
 	/* --------------------------------------------------------------- */
 	// Application textdomain
 	/* --------------------------------------------------------------- */
-	'textdomain'    => 'themosis',
+	'textdomain'    => 'cuisine',
 
 	/* --------------------------------------------------------------- */
 	// Global Javascript namespace of your application
 	/* --------------------------------------------------------------- */
-	'namespace'     => 'themosis',
+	'namespace'     => 'cuisine',
 
 	/* --------------------------------------------------------------- */
 	// Set WordPress admin ajax file without the PHP extension
@@ -54,29 +54,29 @@ return array(
 	// Application classes' alias
 	/* --------------------------------------------------------------- */
 	'aliases'	    => array(
-		'Themosis\\Ajax\\Ajax'						=> 'Ajax',
-		'Themosis\\Facades\\Asset'					=> 'Asset',
-		'Themosis\\Configuration\\Application'		=> 'Application',
-		'Themosis\\Route\\Controller'               => 'Controller',
-		'Themosis\\Facades\\Field'					=> 'Field',
-		'Themosis\\Facades\\Form'					=> 'Form',
-		'Themosis\\Facades\\Html'                   => 'Html',
-		'Themosis\\Facades\\Input'                  => 'Input',
-		'Themosis\\Metabox\\Meta'					=> 'Meta',
-		'Themosis\\Facades\\Metabox'				=> 'Metabox',
-		'Themosis\\Page\\Option'					=> 'Option',
-		'Themosis\\Facades\\Page'					=> 'Page',
-		'Themosis\\Facades\\PostType'				=> 'PostType',
-		'Themosis\\Facades\\Route'					=> 'Route',
-		'Themosis\\Facades\\Section'                => 'Section',
-		'Themosis\\Session\\Session'				=> 'Session',
-		'Themosis\\Taxonomy\\TaxField'              => 'TaxField',
-		'Themosis\\Taxonomy\\TaxMeta'               => 'TaxMeta',
-		'Themosis\\Facades\\Taxonomy'				=> 'Taxonomy',
-		'Themosis\\Facades\\User'					=> 'User',
-		'Themosis\\Facades\\Validator'              => 'Validator',
-		'Themosis\\Facades\\Loop'					=> 'Loop',
-		'Themosis\\Facades\\View'					=> 'View'
+		'Cuisine\\Ajax\\Ajax'						=> 'Ajax',
+		'Cuisine\\Facades\\Asset'					=> 'Asset',
+		'Cuisine\\Configuration\\Application'		=> 'Application',
+		'Cuisine\\Route\\Controller'               => 'Controller',
+		'Cuisine\\Facades\\Field'					=> 'Field',
+		'Cuisine\\Facades\\Form'					=> 'Form',
+		'Cuisine\\Facades\\Html'                   => 'Html',
+		'Cuisine\\Facades\\Input'                  => 'Input',
+		'Cuisine\\Metabox\\Meta'					=> 'Meta',
+		'Cuisine\\Facades\\Metabox'				=> 'Metabox',
+		'Cuisine\\Page\\Option'					=> 'Option',
+		'Cuisine\\Facades\\Page'					=> 'Page',
+		'Cuisine\\Facades\\PostType'				=> 'PostType',
+		'Cuisine\\Facades\\Route'					=> 'Route',
+		'Cuisine\\Facades\\Section'                => 'Section',
+		'Cuisine\\Session\\Session'				=> 'Session',
+		'Cuisine\\Taxonomy\\TaxField'              => 'TaxField',
+		'Cuisine\\Taxonomy\\TaxMeta'               => 'TaxMeta',
+		'Cuisine\\Facades\\Taxonomy'				=> 'Taxonomy',
+		'Cuisine\\Facades\\User'					=> 'User',
+		'Cuisine\\Facades\\Validator'              => 'Validator',
+		'Cuisine\\Facades\\Loop'					=> 'Loop',
+		'Cuisine\\Facades\\View'					=> 'View'
 	)
 
 );

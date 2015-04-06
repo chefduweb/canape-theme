@@ -10,10 +10,11 @@ return array(
      * Watch your commas...
      */
     // Controllers
-    'BaseController'        => themosis_path('app').'controllers'.DS.'BaseController.php',
+    'BaseController'        => cuisine_path('app').'controllers'.DS.'BaseController.php',
+    'HomeController'        => cuisine_path('app').'controllers'.DS.'HomeController.php',
 
     // Models
-    'PostModel'             => themosis_path('app').'models'.DS.'PostModel.php',
+    'PostModel'             => cuisine_path('app').'models'.DS.'PostModel.php',
 
     // Miscellaneous
 

@@ -1,10 +1,10 @@
 <?php
 /*
- * Themosis - A framework for WordPress developers.
+ * Cuisine - A framework for WordPress developers.
  * Based on php 5.4 features and above.
  *
- * @author  Julien Lambé <julien@themosis.com>
- * @link 	http://www.themosis.com/
+ * @author  Julien Lambé <julien@cuisine.com>
+ * @link 	http://www.cuisine.com/
  */
 
 /*----------------------------------------------------*/
@@ -15,26 +15,26 @@ defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 /*----------------------------------------------------*/
 // Asset directory URL.
 /*----------------------------------------------------*/
-defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/app/assets');
+defined('CUISINE_ASSETS') ? CUISINE_ASSETS : define('CUISINE_ASSETS', get_template_directory_uri().'/app/assets');
 
 /*----------------------------------------------------*/
 // Theme Textdomain.
 /*----------------------------------------------------*/
-defined('THEMOSIS_THEME_TEXTDOMAIN') ? THEMOSIS_THEME_TEXTDOMAIN : define('THEMOSIS_THEME_TEXTDOMAIN', 'themosis-theme');
+defined('CUISINE_THEME_TEXTDOMAIN') ? CUISINE_THEME_TEXTDOMAIN : define('CUISINE_THEME_TEXTDOMAIN', 'cuisine-theme');
 
 /*----------------------------------------------------*/
-// Themosis Theme class.
+// Cuisine Theme class.
 // Check if the framework is loaded. If not, warn the user
 // to activate it before continuing using the theme.
 /*----------------------------------------------------*/
-if (!class_exists('THFWK_ThemosisTheme'))
+if (!class_exists('THFWK_CuisineTheme'))
 {
-    class THFWK_ThemosisTheme
+    class THFWK_CuisineTheme
     {
         /**
          * Theme class instance.
          *
-         * @var \THFWK_ThemosisTheme
+         * @var \THFWK_CuisineTheme
          */
         private static $instance = null;
         
@@ -54,7 +54,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
         /**
     	 * Init the class.
          *
-         * @return \THFWK_ThemosisTheme
+         * @return \THFWK_CuisineTheme
     	 */
     	public static function getInstance()
     	{
@@ -74,17 +74,17 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	public function check()
     	{
             $symfony = class_exists('Symfony\Component\ClassLoader\ClassLoader');
-    	    $themosis = class_exists('THFWK_Themosis');
+    	    $cuisine = class_exists('THFWK_Cuisine');
 
-            // Symfony dependency and Themosis plugin classes are available.
-            if ($symfony && $themosis)
+            // Symfony dependency and Cuisine plugin classes are available.
+            if ($symfony && $cuisine)
             {
-                $this->pluginsAreLoaded = $themosis;
+                $this->pluginsAreLoaded = $cuisine;
             }
 
         	// Display a message to the user in the admin panel when he's activating the theme
             // if the plugin is not available.
-        	if (!$themosis)
+        	if (!$cuisine)
             {
             	add_action('admin_notices', array($this, 'displayMessage'));
                 return;
@@ -107,7 +107,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	{
     		?>
     		    <div id="message" class="error">
-                    <p><?php _e("You first need to activate the <b>Themosis framework</b> in order to use this theme.", THEMOSIS_THEME_TEXTDOMAIN); ?></p>
+                    <p><?php _e("You first need to activate the <b>Cuisine framework</b> in order to use this theme.", CUISINE_THEME_TEXTDOMAIN); ?></p>
                 </div>
     		<?php
     	}
@@ -121,7 +121,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
         {
         ?>
             <div id="message" class="error">
-                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure the Themosis plugin includes it before proceeding."), THEMOSIS_THEME_TEXTDOMAIN); ?></p>
+                <p><?php _e(sprintf('<b>Cuisine theme:</b> %s', "Symfony Class Loader component not found. Make sure the Cuisine plugin includes it before proceeding."), CUISINE_THEME_TEXTDOMAIN); ?></p>
             </div>
         <?php
         }
@@ -141,17 +141,17 @@ if (!class_exists('THFWK_ThemosisTheme'))
 /*----------------------------------------------------*/
 // Instantiate the theme class.
 /*----------------------------------------------------*/
-THFWK_ThemosisTheme::getInstance();
+THFWK_CuisineTheme::getInstance();
 
 /*----------------------------------------------------*/
 // Set theme's paths.
 /*----------------------------------------------------*/
-add_filter('themosis_framework_paths', 'themosis_setApplicationPaths');
-add_filter('themosis_application_paths', 'themosis_setApplicationPaths');
+add_filter('cuisine_framework_paths', 'cuisine_setApplicationPaths');
+add_filter('cuisine_application_paths', 'cuisine_setApplicationPaths');
 
-if (!function_exists('themosis_setApplicationPaths'))
+if (!function_exists('cuisine_setApplicationPaths'))
 {
-    function themosis_setApplicationPaths($paths)
+    function cuisine_setApplicationPaths($paths)
     {
         // Theme base path.
         $paths['base'] = __DIR__.DS;
@@ -172,9 +172,9 @@ if (!function_exists('themosis_setApplicationPaths'))
 /*----------------------------------------------------*/
 // Set theme's configurations.
 /*----------------------------------------------------*/
-add_action('themosis_configurations', function()
+add_action('cuisine_configurations', function()
 {
-    Themosis\Configuration\Config::make(array(
+    Cuisine\Configuration\Config::make(array(
         'app'    => array(
             'application',
             'constants',
@@ -187,38 +187,38 @@ add_action('themosis_configurations', function()
         )
     ));
 
-   Themosis\Configuration\Config::set();
+   Cuisine\Configuration\Config::set();
 });
 
 /*----------------------------------------------------*/
 // Register theme view paths.
 /*----------------------------------------------------*/
-add_filter('themosisViewPaths', function($paths)
+add_filter('cuisineViewPaths', function($paths)
 {
-    $paths[] = themosis_path('app').'views'.DS;
+    $paths[] = cuisine_path('app').'views'.DS;
     return $paths;
 });
 
 /*----------------------------------------------------*/
 // Register theme asset paths.
 /*----------------------------------------------------*/
-add_filter('themosisAssetPaths', function($paths)
+add_filter('cuisineAssetPaths', function($paths)
 {
-    $paths[THEMOSIS_ASSETS] = themosis_path('app').'assets';
+    $paths[CUISINE_ASSETS] = cuisine_path('app').'assets';
     return $paths;
 });
 
 /*----------------------------------------------------*/
 // Bootstrap theme.
 /*----------------------------------------------------*/
-add_action('themosis_bootstrap', function()
+add_action('cuisine_bootstrap', function()
 {
     /*----------------------------------------------------*/
     // Handle errors, warnings, exceptions.
     /*----------------------------------------------------*/
     set_exception_handler(function($e)
     {
-        Themosis\Error\Error::exception($e);
+        Cuisine\Error\Error::exception($e);
     });
 
     set_error_handler(function($code, $error, $file, $line)
@@ -227,28 +227,28 @@ add_action('themosis_bootstrap', function()
         // Otherwise WP can't find it when
         // constructing its "Menus" page
         // under appearance in administration.
-        if (class_exists('Themosis\Error\Error'))
+        if (class_exists('Cuisine\Error\Error'))
         {
-            Themosis\Error\Error::native($code, $error, $file, $line);
+            Cuisine\Error\Error::native($code, $error, $file, $line);
         }
     });
 
-    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN)
+    if (defined('CUISINE_ERROR_SHUTDOWN') && CUISINE_ERROR_SHUTDOWN)
     {
         register_shutdown_function(function()
         {
-            Themosis\Error\Error::shutdown();
+            Cuisine\Error\Error::shutdown();
         });
     }
 
     // Passing in the value -1 will show every errors.
-    $report = defined('THEMOSIS_ERROR_REPORT') ? THEMOSIS_ERROR_REPORT : 0;
+    $report = defined('CUISINE_ERROR_REPORT') ? CUISINE_ERROR_REPORT : 0;
     error_reporting($report);
 
     /*----------------------------------------------------*/
     // Set class aliases.
     /*----------------------------------------------------*/
-    $aliases = Themosis\Configuration\Application::get('aliases');
+    $aliases = Cuisine\Configuration\Application::get('aliases');
 
     foreach ($aliases as $namespace => $className)
     {
@@ -258,68 +258,68 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     // Application textdomain.
     /*----------------------------------------------------*/
-    defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Configuration\Application::get('textdomain'));
+    defined('CUISINE_TEXTDOMAIN') ? CUISINE_TEXTDOMAIN : define('CUISINE_TEXTDOMAIN', Cuisine\Configuration\Application::get('textdomain'));
 
     /*----------------------------------------------------*/
     // Trigger framework default configuration.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Configuration::make();
+    Cuisine\Configuration\Configuration::make();
 
     /*----------------------------------------------------*/
     // Application constants.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Constant::load();
+    Cuisine\Configuration\Constant::load();
 
     /*----------------------------------------------------*/
     // Application page templates.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Template::init();
+    Cuisine\Configuration\Template::init();
 
     /*----------------------------------------------------*/
     // Application image sizes.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Images::install();
+    Cuisine\Configuration\Images::install();
 
     /*----------------------------------------------------*/
     // Parse application files and include them.
     // Extends the 'functions.php' file by loading
     // files located under the 'admin' folder.
     /*----------------------------------------------------*/
-    Themosis\Core\AdminLoader::add();
-    Themosis\Core\WidgetLoader::add();
+    Cuisine\Core\AdminLoader::add();
+    Cuisine\Core\WidgetLoader::add();
 
     /*----------------------------------------------------*/
     // Application widgets.
     /*----------------------------------------------------*/
-    Themosis\Core\WidgetLoader::load();
+    Cuisine\Core\WidgetLoader::load();
 
     /*----------------------------------------------------*/
     // Application global JS object.
     /*----------------------------------------------------*/
-    Themosis\Ajax\Ajax::set();
+    Cuisine\Ajax\Ajax::set();
 });
 
 /*----------------------------------------------------*/
 // Handle application requests/responses.
 /*----------------------------------------------------*/
-function themosis_start_app()
+function cuisine_start_app()
 {
-    if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
+    if (THFWK_CuisineTheme::getInstance()->isPluginLoaded())
     {
-        do_action('themosis_parse_query', $arg = '');
+        do_action('cuisine_parse_query', $arg = '');
 
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-        require themosis_path('app').'routes.php';
+        require cuisine_path('app').'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.
         /*----------------------------------------------------*/
-        do_action('themosis_run');
+        do_action('cuisine_run');
 	}
     else
     {
-        _e("The theme won't work until you install the Themosis framework plugin correctly.", THEMOSIS_THEME_TEXTDOMAIN);
+        _e("The theme won't work until you install the Cuisine framework plugin correctly.", CUISINE_THEME_TEXTDOMAIN);
 	}
 }
